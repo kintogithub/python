@@ -2,15 +2,13 @@ from flask import Flask, jsonify
 app = Flask(__name__)
 
 """
-@api {get} /sample/{message} hello world sample request
-@apiName GetSample
-@apiParam (Url) {String} message the message to return
-@apiSuccess (Success_200) {String} data the hello world data
-@apiSuccess (Success_200) {String} output what the user entered in the url
+@api {get} /hello/{name} Prints "Hello {name}"
+@apiName HelloWorld
+@apiParam (Url) {String} name the name to print
+@apiSuccess (200) {String} message the hello {name} message
 """
-@app.route("/sample/<message>")
-def hello(message):
+@app.route("/hello/<name>")
+def hello(name):
     return  jsonify(
-        data='Hello World',
-        output=message
+        message='Hello ' + name
     )
